@@ -90,6 +90,7 @@ if (isset($_POST["cari"])) {
                                 <option value="jenis_kelamin">Jenis Kelamin</option>
                                 <option value="alamat">Alamat</option>
                                 <option value="kota">Kota</option>
+                                <option value="email">E-Mail</option>
                             </select>
                             <button class="btn btn-outline-secondary" type="submit" name="cari">Cari</button>
                         </div>
@@ -111,6 +112,7 @@ if (isset($_POST["cari"])) {
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">Kota</th>
+                    <th scope="col">E-Mail</th>
                     <th scope="col" colspan="2" style="text-align: center">Aksi</th>
                 </tr>
             </thead>
@@ -123,6 +125,7 @@ if (isset($_POST["cari"])) {
                         <td><?= $pemb["jenis_kelamin"]; ?></td>
                         <td><?= $pemb["alamat"]; ?></td>
                         <td><?= $pemb["kota"]; ?></td>
+                        <td><?= $pemb["email"]; ?></td>
                         <td id="aksi_edit">
                             <button class="open_modal btn btn-outline-secondary" id="<?= $pemb['id'] ?>">Update</button>
                         </td>
@@ -161,6 +164,10 @@ if (isset($_POST["cari"])) {
                         <div class="form-group">
                             <label for="kota" class="col-form-label">Kota</label>
                             <input type="text" class="form-control" id="kota" name="kota" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-form-label">E-Mail</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="kota" class="col-form-label">Jenis Kelamin</label>

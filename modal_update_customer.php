@@ -32,6 +32,10 @@ $pembeli = lihatpembeli("SELECT * FROM tb_pembeli WHERE id=$id");
                         <input type="text" class="form-control" id="kota" name="kota" value="<?= $pemb['kota'] ?>" required>
                     </div>
                     <div class="form-group">
+                        <label for="email" class="col-form-label">E-Mail</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<?= $pemb['email'] ?>" required>
+                    </div>
+                    <div class="form-group">
                         <label for="jenis_kelamin" class="col-form-label">Jenis Kelamin</label>
                         <select id="jenis_kelamin" class="form-control" name="jenis_kelamin">
                             <option value="L" <?php if ($pemb['jenis_kelamin'] == 'L') {

@@ -29,11 +29,12 @@ function tambahpembeli($data)
     $alamat = $data["alamat"];
     $kota = $data["kota"];
     $jenis_kelamin = $data["jenis_kelamin"];
+    $email = $data["email"];
     $password_default = "123456";
     $password_hash = password_hash($password_default, PASSWORD_DEFAULT);
 
     $query = "INSERT INTO tb_pembeli VALUES
-    ('', '$nama', '$jenis_kelamin', '$alamat', '$kota', '$password_hash')";
+    ('', '$nama', '$jenis_kelamin', '$alamat', '$kota', '$email' ,'$password_hash')";
 
     mysqli_query($conn, $query);
 
@@ -49,6 +50,7 @@ function updatepembeli($data)
     $nama = $data["nama"];
     $alamat = $data["alamat"];
     $kota = $data["kota"];
+    $email = $data["email"];
     $jenis_kelamin = $data["jenis_kelamin"];
     $password = $data["password"];
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -58,12 +60,12 @@ function updatepembeli($data)
     if (strlen($password) == 0) {
         $query = "UPDATE tb_pembeli
         SET nama = '$nama', jenis_kelamin = '$jenis_kelamin', alamat = '$alamat',
-        kota = '$kota'
+        kota = '$kota', email = '$email'
         WHERE id = $id";
     }else{
         $query = "UPDATE tb_pembeli
         SET nama = '$nama', jenis_kelamin = '$jenis_kelamin', alamat = '$alamat',
-        kota = '$kota', password = '$password_hash'
+        kota = '$kota', email = '$email' ,password = '$password_hash'
         WHERE id = $id";
     }
     mysqli_query($conn, $query);
