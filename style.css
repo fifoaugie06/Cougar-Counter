@@ -1,0 +1,42 @@
+
+.container_content{
+    width: 100%;
+    padding: 20px 45px;
+    box-sizing: border-box;
+}
+
+table{
+    margin-top: 20px;
+    border: 2px solid #dee2e6;
+}
+
+#aksi_edit{
+    text-align: end;
+}
+
+#aksi_edit button{
+    color: #27ae60;
+}
+
+#aksi_delete button{
+    color: #e74c3c;
+}
+
+.container_top{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.item_search button{
+    background-color: #7f8c8d;
+    color: white;
+}
+
+.item_input button{
+    width: 180px;
+}
+
+.content_td td{
+    vertical-align: middle;
+}
