@@ -14,14 +14,6 @@ table{
     text-align: end;
 }
 
-#aksi_edit button{
-    color: #27ae60;
-}
-
-#aksi_delete button{
-    color: #e74c3c;
-}
-
 .container_top{
     display: flex;
     justify-content: space-between;

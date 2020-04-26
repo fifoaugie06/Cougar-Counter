@@ -127,11 +127,11 @@ if (isset($_POST["cari"])) {
                         <td><?= $pemb["kota"]; ?></td>
                         <td><?= $pemb["email"]; ?></td>
                         <td id="aksi_edit">
-                            <button class="open_modal btn btn-outline-secondary" id="<?= $pemb['id'] ?>">Update</button>
+                            <button class="open_modal btn btn-outline-success" id="<?= $pemb['id'] ?>">Update</button>
                         </td>
                         <td id="aksi_delete">
                             <form action="" method="get">
-                                <button class="btn btn-outline-secondary" type="submit" name="delete" value="<?= $pemb['id'] ?>">Delete</button>
+                                <button class="btn btn-outline-danger" type="submit" name="delete" value="<?= $pemb['id'] ?>">Delete</button>
                             </form>
                         </td>
                     </tr>
