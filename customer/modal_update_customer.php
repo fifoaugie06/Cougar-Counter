@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require '../functions.php';
 
 // Show data to input
 $id = $_GET['update_id'];
@@ -18,7 +18,7 @@ $pembeli = lihatpembeli("SELECT * FROM tb_pembeli WHERE id=$id");
         <form action="" method="POST">
             <?php foreach ($pembeli as $pemb) : ?>
                 <div class="modal-body">
-                    <input type="hidden" id="id" name="id_update" value="<?= $pemb['id'];?>">
+                    <input type="hidden" id="id" name="id_update" value="<?= $pemb['id']; ?>">
                     <div class="form-group">
                         <label for="nama" class="col-form-label">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $pemb['nama'] ?>" required>
@@ -39,16 +39,16 @@ $pembeli = lihatpembeli("SELECT * FROM tb_pembeli WHERE id=$id");
                         <label for="jenis_kelamin" class="col-form-label">Jenis Kelamin</label>
                         <select id="jenis_kelamin" class="form-control" name="jenis_kelamin">
                             <option value="L" <?php if ($pemb['jenis_kelamin'] == 'L') {
-                                        echo ("selected");
-                                    } ?>>Laki-laki</option>
+                                                    echo ("selected");
+                                                } ?>>Laki-laki</option>
                             <option value="P" <?php if ($pemb['jenis_kelamin'] == 'P') {
-                                        echo ("selected");
-                                    } ?>>Perempuan</option>
+                                                    echo ("selected");
+                                                } ?>>Perempuan</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-form-label">New Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Optionality">
                     </div>
                 </div>
                 <div class="modal-footer">

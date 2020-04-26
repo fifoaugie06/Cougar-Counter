@@ -25,7 +25,7 @@
                     <a class="nav-link" href="../product/product.php">Product<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.php">Customer</a>
+                    <a class="nav-link" href="../customer/customer.php">Customer</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link">Transaction</a>
