@@ -1,5 +1,5 @@
 <?php
-require '../functions.php';
+require '../functions_customer.php';
 
 // Show data to input
 $id = $_GET['update_id'];

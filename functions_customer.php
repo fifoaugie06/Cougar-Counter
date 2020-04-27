@@ -1,6 +1,5 @@
 <?php
-
-$conn = mysqli_connect("localhost", "root", "", "cougar_counter");
+include 'koneksi.php';
 
 function lihatpembeli($query)
 {

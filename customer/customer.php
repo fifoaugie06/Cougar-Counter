@@ -1,5 +1,5 @@
 <?php
-require '../functions.php';
+require '../functions_customer.php';
 // Proses Pagination
 $jumlahDataPerhalaman = 5;
 $jumlahDataKeseluruhan = count(lihatpembeli('SELECT * FROM tb_pembeli'));
@@ -187,8 +187,8 @@ if (isset($_POST["cari"])) {
                             <p class="text-right" style="font-style: italic; font-size: 12px; color: red">Default password New Customer 123456</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary" name="submit">Tambahkan</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success" name="submit">Tambahkan</button>
                         </div>
                     </form>
                 </div>
