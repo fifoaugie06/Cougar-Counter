@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
     if (tambahbarang($_POST) > 0) {
         header("Location: product.php");
     } else {
-        header("Location: www.google.com");
+        header("Location: product.php");
     }
 }
 
@@ -30,18 +30,18 @@ if (isset($_POST["submit"])) {
 // }
 
 // Proses Delete data
-// if (isset($_GET["delete"])) {
-//     if (deletepembeli($_GET) > 0) {
-//         header("Location: customer.php");
-//     } else {
-//         header("Location: customer.php");
-//     }
-// }
+if (isset($_GET["delete"])) {
+    if (deletebarang($_GET) > 0) {
+        header("Location: product.php");
+    } else {
+        header("Location: product.php");
+    }
+}
 
 // Proses Search
-// if (isset($_POST["cari"])) {
-//     $pembeli = caripembeli($_POST['keyword'], $_POST['searchby']);
-// }
+if (isset($_POST["cari"])) {
+    $produk = caribarang($_POST['keyword'], $_POST['searchby']);
+}
 
 ?>
 
@@ -65,7 +65,7 @@ if (isset($_POST["submit"])) {
 <body>
     <!-- Image and text -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Cougar Counter</a>
+        <a class="navbar-brand" href="../homepage/homepage.php">Cougar Counter</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -93,11 +93,11 @@ if (isset($_POST["submit"])) {
                         <input name="keyword" type="text" class="form-control" placeholder="Masukkan Pencarian" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
                         <div class="input-group-append" id="button-addon4">
                             <select id="filter" class="btn btn-outline-secondary" name="searchby">
-                                <option value="nama-barang">Nama Barang</option>
+                                <option value="nama_barang">Nama Barang</option>
                                 <option value="merk">Merk</option>
                                 <option value="type">Type</option>
                                 <option value="harga">Harga</option>
-                                <option value="email">Stok</option>
+                                <option value="stok">Stok</option>
                             </select>
                             <button class="btn btn-outline-secondary" type="submit" name="cari">Cari</button>
                         </div>
@@ -110,7 +110,7 @@ if (isset($_POST["submit"])) {
         </div>
 
         <!--TABEL-->
-        <table class="table table-striped">
+        <table class="table table-striped" border="1">
             <thead>
                 <tr>
                     <th scope="col">No</th>
@@ -118,9 +118,10 @@ if (isset($_POST["submit"])) {
                     <th scope="col">Nama Barang</th>
                     <th scope="col">Merk</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Harga</th>
-                    <th scope="col">Stok</th>
-                    <th scope="col">Last Update</th>
+                    <th scope="col" style="text-align: center; width: 700px">Description</th>
+                    <th scope="col" style="text-align: center;">Harga</th>
+                    <th scope="col" style="text-align: center;">Stok</th>
+                    <th scope="col" style="text-align: center;">Last Update</th>
                     <th scope="col" colspan="2" style="text-align: center">Aksi</th>
                 </tr>
             </thead>
@@ -133,15 +134,16 @@ if (isset($_POST["submit"])) {
                         <td><?= $prod["nama_barang"]; ?></td>
                         <td><?= $prod["merk"]; ?></td>
                         <td><?= $prod["type"]; ?></td>
-                        <td><?= $prod["harga"]; ?></td>
-                        <td><?= $prod["stok"]; ?></td>
-                        <td><?= $prod["last-update"]; ?></td>
+                        <td><?= $prod["description"]; ?></td>
+                        <td style="text-align: center;"><?= $prod["harga"]; ?></td>
+                        <td style="text-align: center;"><?= $prod["stok"]; ?></td>
+                        <td style="text-align: center;"><?= $prod["last-update"]; ?></td>
                         <td id="aksi_edit">
-                            <button class="open_modal btn btn-outline-success" id="<?= $pemb['id'] ?>">Update</button>
+                            <button class="open_modal btn btn-outline-success" id="<?= $prod['id'] ?>">Update</button>
                         </td>
                         <td id="aksi_delete">
                             <form action="" method="get">
-                                <button class="btn btn-outline-danger" type="submit" name="delete" value="<?= $pemb['id'] ?>">Delete</button>
+                                <button class="btn btn-outline-danger" type="submit" name="delete" value="<?= $prod['id'] ?>">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -176,6 +178,10 @@ if (isset($_POST["submit"])) {
                                 <input type="text" class="form-control" id="type" name="type" required>
                             </div>
                             <div class="form-group">
+                                <label for="description" class="col-form-label">Description</label>
+                                <textarea type="text" class="form-control" id="description" name="description" required maxlength="150"></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label for="harga" class="col-form-label">Harga</label>
                                 <input type="number" class="form-control" id="harga" name="harga" required>
                             </div>
@@ -183,7 +189,7 @@ if (isset($_POST["submit"])) {
                                 <label for="stok" class="col-form-label">Stok</label>
                                 <input type="number" class="form-control" id="stok" name="stok" required>
                             </div>
-                            <input type="file" name="gambar" id="gambar" style="margin-top: 16px;">
+                            <input type="file" name="gambar" id="gambar" style="margin-top: 16px;" required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
