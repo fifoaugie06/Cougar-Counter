@@ -42,7 +42,6 @@ function tambahpembeli($data)
 
 function updatepembeli($data)
 {
-
     global $conn;
 
     $id = (int) $data["id_update"];

@@ -15,23 +15,27 @@ if (isset($_POST["submit"])) {
     if (tambahbarang($_POST) > 0) {
         header("Location: product.php");
     } else {
-        header("Location: product.php");
+        echo "
+            <script>
+                alert('data gagal ditambahkan');
+                document.location.href = 'product.php';
+            </script>
+        ";
     }
 }
 
 // Proses Update data
-// if (isset($_POST['update'])) {
-//     updatepembeli($_POST);
-//     if (updatepembeli($_POST) > 0) {
-//         header("Location: customer.php");
-//     } else {
-//         header("Location: customer.php");
-//     }
-// }
+if (isset($_POST['update'])) {
+    if (updatebarang($_POST) > 0) {
+        header("Location: product.php");
+    } else {
+        header("Location: product.php");
+    }
+}
 
 // Proses Delete data
-if (isset($_GET["delete"])) {
-    if (deletebarang($_GET) > 0) {
+if (isset($_POST["delete"])) {
+    if (deletebarang($_POST) > 0) {
         header("Location: product.php");
     } else {
         header("Location: product.php");
@@ -112,16 +116,16 @@ if (isset($_POST["cari"])) {
         <!--TABEL-->
         <table class="table table-striped" border="1">
             <thead>
-                <tr>
+                <tr class="tr-product">
                     <th scope="col">No</th>
                     <th scope="col">Gambar</th>
                     <th scope="col">Nama Barang</th>
                     <th scope="col">Merk</th>
                     <th scope="col">Type</th>
-                    <th scope="col" style="text-align: center; width: 700px">Description</th>
-                    <th scope="col" style="text-align: center;">Harga</th>
-                    <th scope="col" style="text-align: center;">Stok</th>
-                    <th scope="col" style="text-align: center;">Last Update</th>
+                    <th scope="col" style="width: 700px">Description</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Stok</th>
+                    <th scope="col">Last Update</th>
                     <th scope="col" colspan="2" style="text-align: center">Aksi</th>
                 </tr>
             </thead>
@@ -130,28 +134,31 @@ if (isset($_POST["cari"])) {
                 <?php foreach ($produk as $prod) : ?>
                     <tr class="content_td">
                         <td><?= $i; ?></td>
-                        <td> Gb <?= $i ?> </td>
+                        <td>
+                            <?php if ($prod['gambar'] == null) : ?>
+                                <a href="#" rel="noopener noreferrer" style="text-align: center;">Lihat Gambar</a>
+                            <?php else : ?>
+                                <a href="../img/<?= $prod['gambar'] ?>" target="_blank" rel="noopener noreferrer" style="text-align: center;">Lihat Gambar</a>
+                            <?php endif; ?>
+                        </td>
                         <td><?= $prod["nama_barang"]; ?></td>
                         <td><?= $prod["merk"]; ?></td>
                         <td><?= $prod["type"]; ?></td>
                         <td><?= $prod["description"]; ?></td>
                         <td style="text-align: center;"><?= $prod["harga"]; ?></td>
                         <td style="text-align: center;"><?= $prod["stok"]; ?></td>
-                        <td style="text-align: center;"><?= $prod["last-update"]; ?></td>
+                        <td style="text-align: center;"><?= $prod["last_update"]; ?></td>
                         <td id="aksi_edit">
-                            <button class="open_modal btn btn-outline-success" id="<?= $prod['id'] ?>">Update</button>
+                            <button class="update_product btn btn-outline-success" id="<?= $prod['id'] ?>">Update</button>
                         </td>
                         <td id="aksi_delete">
-                            <form action="" method="get">
-                                <button class="btn btn-outline-danger" type="submit" name="delete" value="<?= $prod['id'] ?>">Delete</button>
-                            </form>
+                            <button class="delete_product btn btn-outline-danger" id="<?= $prod['id']?>">Delete</button>
                         </td>
                     </tr>
                     <?php $i++; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
-
 
         <!--Modal tambah data-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -163,7 +170,7 @@ if (isset($_POST["cari"])) {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="nama_barang" class="col-form-label">Nama Barang</label>
@@ -201,11 +208,16 @@ if (isset($_POST["cari"])) {
         </div>
 
 
-        <!--Modal update data
-        <div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!--Modal update data-->
+        <div id="ModalUpdateProduct" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
         </div>
-        -->
+
+        <!--Modal delete data-->
+        <div class="modal fade" id="ModalDeleteProduct">
+
+        </div>
+
 
         <!--Pagination-->
         <nav aria-label="Page navigation example" style="margin-top: 50px">

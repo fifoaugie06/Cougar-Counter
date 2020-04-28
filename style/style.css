@@ -32,3 +32,7 @@ table{
 .content_td td{
     vertical-align: middle;
 }
+
+.tr-product th{
+    text-align: center;
+}
