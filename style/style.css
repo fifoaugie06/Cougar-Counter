@@ -36,3 +36,9 @@ table{
 .tr-product th{
     text-align: center;
 }
+
+.jumbotron{
+    margin: 0;
+    background-image: url("../img/bg.jpg");
+    background-size: contain;
+}

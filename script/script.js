@@ -46,11 +46,12 @@ $(document).ready(function () {
                 delete_product_id: id,
             },
             success: function (ajaxData) {
-                $("#ModalUpdateProduct").html(ajaxData);
-                $("#ModalUpdateProduct").modal('show', {
+                $("#ModalDeleteProduct").html(ajaxData);
+                $("#ModalDeleteProduct").modal('show', {
                     backdrop: 'true'
                 });
-            }
+                console.log('oy');
+            },
         });
     });
 });

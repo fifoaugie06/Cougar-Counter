@@ -49,6 +49,7 @@ if (isset($_POST["cari"])) {
 
 ?>
 
+
 <!doctype html>
 <html lang="en">
 
@@ -152,7 +153,7 @@ if (isset($_POST["cari"])) {
                             <button class="update_product btn btn-outline-success" id="<?= $prod['id'] ?>">Update</button>
                         </td>
                         <td id="aksi_delete">
-                            <button class="delete_product btn btn-outline-danger" id="<?= $prod['id']?>">Delete</button>
+                            <button class="delete_product btn btn-outline-danger" id="<?= $prod['id'] ?>">Delete</button>
                         </td>
                     </tr>
                     <?php $i++; ?>
@@ -186,7 +187,7 @@ if (isset($_POST["cari"])) {
                             </div>
                             <div class="form-group">
                                 <label for="description" class="col-form-label">Description</label>
-                                <textarea type="text" class="form-control" id="description" name="description" required maxlength="150"></textarea>
+                                <textarea type="text" class="form-control" id="description" name="description" required maxlength="200"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="harga" class="col-form-label">Harga</label>
@@ -214,7 +215,7 @@ if (isset($_POST["cari"])) {
         </div>
 
         <!--Modal delete data-->
-        <div class="modal fade" id="ModalDeleteProduct">
+        <div id="ModalDeleteProduct" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
         </div>
 

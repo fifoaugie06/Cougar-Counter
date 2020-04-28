@@ -35,7 +35,7 @@ $product = lihatbarang("SELECT * FROM tb_barang WHERE id=$id");
                     </div>
                     <div class="form-group">
                         <label for="description" class="col-form-label">Description</label>
-                        <textarea type="text" class="form-control" id="description" name="description" required maxlength="150"><?= $prod['description'] ?></textarea>
+                        <textarea type="text" class="form-control" id="description" name="description" required maxlength="200"><?= $prod['description'] ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="harga" class="col-form-label">Harga</label>
