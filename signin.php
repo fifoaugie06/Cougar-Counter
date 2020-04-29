@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+if ( isset($_SESSION['userlogin'])){
+    
+    header('location: homepage/homepage.php');
+    exit;
+}
+
 require 'functions_signin_signup.php';
 
 if ( isset($_POST['login']) ){

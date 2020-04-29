@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+if ( !isset($_SESSION['userlogin'])){
+    
+    header('location: ../signin.php');
+    exit;
+}
+
+
 require '../functions_customer.php';
 
 // Show data to input

@@ -1,8 +1,21 @@
 <?php
 
+if (isset($_SESSION['userlogin'])) {
+    header("Location: homepage/homepage.php");
+    exit;
+}
+
+if (!isset($_SESSION)) {
+
+    session_start();
+}
+
+
 require "koneksi.php";
 
-function registrasi($data){
+
+function registrasi($data)
+{
     global $conn;
 
     $nama = htmlspecialchars($data['nama']);
@@ -16,7 +29,7 @@ function registrasi($data){
     // cek email sudah terdaftar di db atau belum
     $result = mysqli_query($conn, "SELECT email FROM tb_pembeli WHERE email = '$email'");
 
-    if( mysqli_fetch_assoc($result) ){
+    if (mysqli_fetch_assoc($result)) {
         return false;
     }
 
@@ -29,7 +42,8 @@ function registrasi($data){
     return mysqli_affected_rows($conn);
 }
 
-function auth($data){
+function auth($data)
+{
     global $conn;
 
     $email = $data['email'];
@@ -37,15 +51,19 @@ function auth($data){
 
     // cek email dulu
     $result = mysqli_query($conn, "SELECT * FROM tb_pembeli WHERE email = '$email'");
-    if( mysqli_num_rows($result) === 1 ){
-        
+    if (mysqli_num_rows($result) === 1) {
+
         // cek password
         $row = mysqli_fetch_assoc($result);
-        if ( password_verify($password, $row['password']) ){
+        if (password_verify($password, $row['password'])) {
+            // set session
+            $_SESSION["userlogin"] = true;
+            $_SESSION["userloginid"] = $row['id'];
+
+            // $_SESSION["userdata"] = $_POST[]
+
             header("Location: homepage/homepage.php");
             exit;
         }
     }
 }
-
-?>

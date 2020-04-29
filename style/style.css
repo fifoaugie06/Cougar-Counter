@@ -40,7 +40,7 @@ table{
 .jumbotron{
     margin: 0;
     background-image: url("../img/bg.jpg");
-    background-size: contain;
+    background-size: auto;
 }
 
 .wrapper{
