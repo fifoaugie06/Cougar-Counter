@@ -10,7 +10,7 @@ if ( !isset($_SESSION['userlogin'])){
 
 require '../functions_customer.php';
 // Proses Pagination
-$jumlahDataPerhalaman = 5;
+$jumlahDataPerhalaman = 10;
 $jumlahDataKeseluruhan = count(lihatpembeli('SELECT * FROM tb_pembeli'));
 $jumlahHalaman = ceil($jumlahDataKeseluruhan / $jumlahDataPerhalaman);
 $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;

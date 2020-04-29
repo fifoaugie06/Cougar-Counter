@@ -9,9 +9,10 @@ if (!isset($_SESSION['userlogin'])) {
 
 require '../functions_transactions.php';
 
-// lihat transaksi
-$transaksi = lihattransaksi();
+// Proses Pagination LIMIT
+$query .= "LIMIT $awalData, $jumlahDataPerhalaman";
 
+$transaksi = lihattransaksi($query);
 
 ?>
 
@@ -97,6 +98,46 @@ $transaksi = lihattransaksi();
                 <?php endforeach; ?>
             </tbody>
         </table>
+
+        <!--Pagination-->
+        <nav aria-label="Page navigation example" style="margin-top: 50px">
+            <ul class="pagination justify-content-end">
+                <!-- PREVIOUS -->
+                <?php if ($halamanAktif > 1) : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">Previous</a>
+                    </li>
+                <?php else : ?>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">Previous</a>
+                    </li>
+                <?php endif; ?>
+
+                <!-- INDEX AKTIF -->
+                <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
+                    <?php if ($i == $halamanAktif) : ?>
+                        <li class="page-item active">
+                            <a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a>
+                        </li>
+                    <?php else : ?>
+                        <li class="page-item inactive">
+                            <a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a>
+                        </li>
+                    <?php endif; ?>
+                <?php endfor; ?>
+
+                <!-- NEXT -->
+                <?php if ($halamanAktif < $jumlahHalaman) : ?>
+                    <li class="page-item ">
+                        <a class="page-link" href="?halaman=<?= $halamanAktif + 1; ?>">Next</a>
+                    </li>
+                <?php else : ?>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="?halaman=<?= $halamanAktif + 1; ?>">Next</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </nav>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

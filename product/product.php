@@ -10,8 +10,8 @@ if ( !isset($_SESSION['userlogin'])){
 
 require '../functions_product.php';
 // Proses Pagination
-$jumlahDataPerhalaman = 5;
-$jumlahDataKeseluruhan = count(lihatbarang('SELECT * FROM tb_pembeli'));
+$jumlahDataPerhalaman = 10;
+$jumlahDataKeseluruhan = count(lihatbarang('SELECT * FROM tb_barang'));
 $jumlahHalaman = ceil($jumlahDataKeseluruhan / $jumlahDataPerhalaman);
 $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
 $awalData = ($jumlahDataPerhalaman * $halamanAktif) - $jumlahDataPerhalaman;
