@@ -23,28 +23,57 @@ $pembeli = lihatpembeli("SELECT * FROM tb_pembeli LIMIT $awalData, $jumlahDataPe
 // Proses Create data
 if (isset($_POST["submit"])) {
     if (tambahpembeli($_POST) > 0) {
-        header("Location: customer.php");
+        echo "
+        <script>
+            alert('Customer berhasil ditambahkan');
+            document.location.href = 'customer.php';
+        </script>
+        ";
     } else {
-        header("Location: customer.php");
+        echo "
+        <script>
+            alert('Customer gagal ditambahkan');
+            document.location.href = 'customer.php';
+        </script>
+        ";
     }
 }
 
 // Proses Update data
 if (isset($_POST['update'])) {
-    updatepembeli($_POST);
     if (updatepembeli($_POST) > 0) {
-        header("Location: customer.php");
+        echo "
+        <script>
+            alert('Customer berhasil diupdate');
+            document.location.href = 'customer.php';
+        </script>
+        ";
     } else {
-        header("Location: customer.php");
+        echo "
+        <script>
+            alert('Customer gagal diupdate');
+            document.location.href = 'customer.php';
+        </script>
+        ";
     }
 }
 
 // Proses Delete data
 if (isset($_POST["delete"])) {
     if (deletepembeli($_POST) > 0) {
-        header("Location: customer.php");
+        echo "
+        <script>
+            alert('Customer berhasil dihapus');
+            document.location.href = 'customer.php';
+        </script>
+        ";
     } else {
-        header("Location: customer.php");
+        echo "
+        <script>
+            alert('Customer gagal dihapus');
+            document.location.href = 'customer.php';
+        </script>
+        ";
     }
 }
 

@@ -22,11 +22,16 @@ $produk = lihatbarang("SELECT * FROM tb_barang LIMIT $awalData, $jumlahDataPerha
 // Proses Create data
 if (isset($_POST["submit"])) {
     if (tambahbarang($_POST) > 0) {
-        header("Location: product.php");
+        echo "
+            <script>
+                alert('Product berhasil ditambahkan');
+                document.location.href = 'product.php';
+            </script>
+        ";
     } else {
         echo "
             <script>
-                alert('data gagal ditambahkan');
+                alert('Product gagal ditambahkan');
                 document.location.href = 'product.php';
             </script>
         ";
@@ -36,18 +41,38 @@ if (isset($_POST["submit"])) {
 // Proses Update data
 if (isset($_POST['update'])) {
     if (updatebarang($_POST) > 0) {
-        header("Location: product.php");
+        echo "
+        <script>
+            alert('Product berhasil diupdate');
+            document.location.href = 'product.php';
+        </script>
+    ";
     } else {
-        header("Location: product.php");
+        echo "
+        <script>
+            alert('Product gagal diupdate');
+            document.location.href = 'product.php';
+        </script>
+    ";
     }
 }
 
 // Proses Delete data
 if (isset($_POST["delete"])) {
     if (deletebarang($_POST) > 0) {
-        header("Location: product.php");
+        echo "
+        <script>
+            alert('Product berhasil dihapus');
+            document.location.href = 'product.php';
+        </script>
+    ";
     } else {
-        header("Location: product.php");
+        echo "
+        <script>
+            alert('Product gagal dihapus');
+            document.location.href = 'product.php';
+        </script>
+    ";
     }
 }
 
@@ -57,7 +82,6 @@ if (isset($_POST["cari"])) {
 }
 
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -74,7 +98,6 @@ if (isset($_POST["cari"])) {
 
     <title>Cougar Counter</title>
 </head>
-
 
 <body>
     <!-- Image and text -->

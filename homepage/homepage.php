@@ -101,7 +101,9 @@ if( isset($_POST['cari'])){
         <section class="jumbotron text-center">
             <div class="container" style="height: 300px; padding-top: 30px;">
                 <h1 class="jumbotron-heading text-white">Cougar Counter</h1>
-                <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+                <p class="lead text-white-50" >Solusi Belanja Online Mudah dan Hemat <br> 
+                Temukan Segala Macam Produk IT Unggulan dengan Transaksi Aman dan Menguntungkan <br>
+                Jika Barang yang Anda Cari tidak Tersedia di List Hubungi Kami.</p>
                 <p>
                     <a href="#" class="btn btn-primary my-2">Main call to action</a>
                     <a href="#" class="btn btn-secondary my-2">Secondary action</a>
