@@ -35,7 +35,7 @@ function registrasi($data)
 
 
     $query = "INSERT INTO tb_pembeli VALUES
-    ('', '$nama', '$jenis_kelamin', '$alamat', '$kota', '$email' ,'$password_hash')";
+    (NULL, '$nama', '$jenis_kelamin', '$alamat', '$kota', '$email' ,'$password_hash')";
 
     mysqli_query($conn, $query);
 
@@ -59,8 +59,6 @@ function auth($data)
             // set session
             $_SESSION["userlogin"] = true;
             $_SESSION["userloginid"] = $row['id'];
-
-            // $_SESSION["userdata"] = $_POST[]
 
             header("Location: homepage/homepage.php");
             exit;

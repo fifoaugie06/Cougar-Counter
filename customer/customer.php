@@ -40,8 +40,8 @@ if (isset($_POST['update'])) {
 }
 
 // Proses Delete data
-if (isset($_GET["delete"])) {
-    if (deletepembeli($_GET) > 0) {
+if (isset($_POST["delete"])) {
+    if (deletepembeli($_POST) > 0) {
         header("Location: customer.php");
     } else {
         header("Location: customer.php");
@@ -121,16 +121,16 @@ if (isset($_POST["cari"])) {
 
 
         <!--TABEL-->
-        <table class="table table-striped">
+        <table class="table table-striped" border="1">
             <thead>
-                <tr>
-                    <th scope="col">No</th>
+                <tr class="tr-product">
+                    <th scope="col" style="width: 10px;">No</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Jenis Kelamin</th>
+                    <th scope="col" style="width: 130px;">Jenis Kelamin</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">Kota</th>
                     <th scope="col">E-Mail</th>
-                    <th scope="col" colspan="2" style="text-align: center">Aksi</th>
+                    <th scope="col" colspan="2" style="text-align: center;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -139,17 +139,15 @@ if (isset($_POST["cari"])) {
                     <tr class="content_td">
                         <td><?= $i; ?></td>
                         <td><?= $pemb["nama"]; ?></td>
-                        <td><?= $pemb["jenis_kelamin"]; ?></td>
+                        <td style="text-align: center;"><?= $pemb["jenis_kelamin"]; ?></td>
                         <td><?= $pemb["alamat"]; ?></td>
                         <td><?= $pemb["kota"]; ?></td>
                         <td><?= $pemb["email"]; ?></td>
-                        <td id="aksi_edit">
+                        <td id="aksi_edit" style="width: 50px;">
                             <button class="open_modal btn btn-outline-success" id="<?= $pemb['id'] ?>">Update</button>
                         </td>
-                        <td id="aksi_delete">
-                            <form action="" method="get">
-                                <button class="btn btn-outline-danger" type="submit" name="delete" value="<?= $pemb['id'] ?>">Delete</button>
-                            </form>
+                        <td id="aksi_delete" style="width: 50px;">
+                            <button class="delete_customer btn btn-outline-danger" id="<?= $pemb['id'] ?>">Delete</button>
                         </td>
                     </tr>
                     <?php $i++; ?>
@@ -206,6 +204,11 @@ if (isset($_POST["cari"])) {
 
         <!--Modal update data-->
         <div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+        </div>
+
+        <!--Modal delete data-->
+        <div id="ModalDeleteCustomer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
         </div>
 

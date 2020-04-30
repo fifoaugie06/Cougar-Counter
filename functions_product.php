@@ -39,7 +39,7 @@ function tambahbarang($data)
     }
 
     $query = "INSERT INTO tb_barang VALUES
-    ('', '$gambar' ,'$nama_barang', '$merk', '$type', '$description' ,$harga, $stok, current_timestamp())";
+    (NULL, '$gambar' ,'$nama_barang', '$merk', '$type', '$description' ,$harga, $stok, current_timestamp())";
 
     mysqli_query($conn, $query);
 

@@ -54,4 +54,22 @@ $(document).ready(function () {
             },
         });
     });
+
+    // AJAX MODAL DELETE Customer
+    $(".delete_customer").click(function (e) {
+        var id = $(this).attr("id");
+        $.ajax({
+            url: "modal_delete_customer.php",
+            type: "GET",
+            data: {
+                delete_customer_id: id,
+            },
+            success: function (ajaxData) {
+                $("#ModalDeleteCustomer").html(ajaxData);
+                $("#ModalDeleteCustomer").modal('show', {
+                    backdrop: 'true'
+                });
+            },
+        });
+    });
 });

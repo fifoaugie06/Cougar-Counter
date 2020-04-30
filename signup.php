@@ -8,7 +8,6 @@ if ( isset($_SESSION['userlogin'])){
 }
 
 require "functions_signin_signup.php";
-
 if( isset($_POST["submit"]) ){
     if(registrasi($_POST) > 0){
         echo "<script>

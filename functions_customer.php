@@ -33,7 +33,7 @@ function tambahpembeli($data)
     $password_hash = password_hash($password_default, PASSWORD_DEFAULT);
 
     $query = "INSERT INTO tb_pembeli VALUES
-    ('', '$nama', '$jenis_kelamin', '$alamat', '$kota', '$email' ,'$password_hash')";
+    (NULL, '$nama', '$jenis_kelamin', '$alamat', '$kota', '$email' ,'$password_hash')";
 
     mysqli_query($conn, $query);
 
@@ -74,7 +74,7 @@ function deletepembeli($data)
 {
     global $conn;
 
-    $id = $data["delete"];
+    $id = (int)$data["id"];
 
     $query = "DELETE FROM tb_pembeli WHERE id = $id";
 

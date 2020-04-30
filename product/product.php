@@ -158,10 +158,10 @@ if (isset($_POST["cari"])) {
                         <td style="text-align: center;"><?= $prod["harga"]; ?></td>
                         <td style="text-align: center;"><?= $prod["stok"]; ?></td>
                         <td style="text-align: center;"><?= $prod["last_update"]; ?></td>
-                        <td id="aksi_edit">
+                        <td id="aksi_edit" style="width: 50px;">
                             <button class="update_product btn btn-outline-success" id="<?= $prod['id'] ?>">Update</button>
                         </td>
-                        <td id="aksi_delete">
+                        <td id="aksi_delete" style="width: 50px;">
                             <button class="delete_product btn btn-outline-danger" id="<?= $prod['id'] ?>">Delete</button>
                         </td>
                     </tr>

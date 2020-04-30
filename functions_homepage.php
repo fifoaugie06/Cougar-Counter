@@ -37,7 +37,7 @@ function orderbarang($data)
     $kode_barang = (int) $data['kode_barang'];
     $kode_pembeli = (int) $data['kode_pembeli'];
 
-    $query = "INSERT INTO tb_transaction VALUES('', $kode_barang, $kode_pembeli, current_timestamp())";
+    $query = "INSERT INTO tb_transaction VALUES(NULL, $kode_barang, $kode_pembeli, current_timestamp())";
 
     mysqli_query($conn, $query);
 
@@ -59,4 +59,10 @@ function updatestok($data)
     mysqli_query($conn, $queryupdate);
 
     return mysqli_affected_rows($conn);
+}
+
+function caribarang($keyword){
+    $query = "SELECT * FROM tb_barang
+                WHERE CONCAT(CONCAT(nama_barang, merk), type) LIKE '%$keyword%' ";
+    return lihathomepage($query);
 }

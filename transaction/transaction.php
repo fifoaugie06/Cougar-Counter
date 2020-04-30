@@ -14,6 +14,7 @@ $query .= "LIMIT $awalData, $jumlahDataPerhalaman";
 
 $transaksi = lihattransaksi($query);
 
+
 ?>
 
 <!doctype html>
@@ -54,25 +55,6 @@ $transaksi = lihattransaksi($query);
         </div>
     </nav>
     <div class="container_content">
-        <!--Button Cari dan Input Data-->
-        <div class="container_top">
-            <form action="" method="POST">
-                <div class="item_search">
-                    <div class="input-group">
-                        <input name="keyword" type="text" class="form-control" placeholder="Masukkan Pencarian" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
-                        <div class="input-group-append" id="button-addon4">
-                            <select id="filter" class="btn btn-outline-secondary" name="searchby">
-                                <option value="detail_pembeli">Pembeli</option>
-                                <option value="detail_barang">Barang</option>
-                                <option value="harga">Harga</option>
-                            </select>
-                            <button class="btn btn-outline-secondary" type="submit" name="cari">Cari</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-
         <!--TABEL-->
         <table class="table table-striped" border="1">
             <thead>

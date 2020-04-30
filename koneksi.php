@@ -1,5 +1,5 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "cougar_counter");
+$conn = mysqli_connect("localhost", "root", '', "cougar_counter");
 
 ?>

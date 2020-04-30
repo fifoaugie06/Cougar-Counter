@@ -37,6 +37,11 @@ if (isset($_POST['order'])) {
     }
 }
 
+// Cari 
+if( isset($_POST['cari'])){
+    $homepage = caribarang($_POST['keyword']);
+}
+
 
 ?>
 
@@ -64,7 +69,7 @@ if (isset($_POST['order'])) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav" style="margin-left: 16px">
+            <ul class="navbar-nav mr-auto" style="margin-left: 16px">
                 <li class="nav-item">
                     <a class="nav-link" href="../product/product.php">Product<span class="sr-only">(current)</span></a>
                 </li>
@@ -85,6 +90,10 @@ if (isset($_POST['order'])) {
                     </div>
                 </li>
             </ul>
+            <form class="form-inline my-2 my-lg-0" action="" method="POST">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                <button class="btn btn-outline-success my-2 my-sm-0" name="cari" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 
@@ -99,32 +108,31 @@ if (isset($_POST['order'])) {
                 </p>
             </div>
         </section>
-
         <div class="album py-5 bg-light">
             <div class="container" style="padding: 0;">
-                <div class="d-flex justify-content-center">
-                    <div class="card border-secondary mb-3" style="width: 16rem; margin-right: 22px;">
+                <div class="row d-flex justify-content-center">
+                    <div class="card border-secondary sm-3" style="width: 200px; margin: 3px 11px ;">
                         <div class="card-header">Totally Product</div>
                         <div class="card-body text-secondary">
                             <p></p>
                             <h2 class="card-title text-center"><?= $countAllProduct; ?></h2>
                         </div>
                     </div>
-                    <div class="card border-secondary mb-3" style="width: 16rem; margin-right: 22px;">
+                    <div class="card border-secondary sm-3" style="width: 200px; margin: 3px 11px ;">
                         <div class="card-header">Total Transaction</div>
                         <div class="card-body text-secondary">
                             <p></p>
                             <h2 class="card-title" style="text-align: center;"><?= $countTotallySold; ?></h2>
                         </div>
                     </div>
-                    <div class="card border-secondary mb-3" style="width: 16rem;">
+                    <div class="card border-secondary sm-3" style="width: 200px; margin: 3px 11px ;">
                         <div class="card-header">Not Sold Yet</div>
                         <div class="card-body text-secondary">
                             <p></p>
                             <h2 class="card-title text-center"><?= $sumNotSoldYet ?></h2>
                         </div>
                     </div>
-                    <div class="card border-secondary mb-3" style="width: 16rem; margin-left: 22px;">
+                    <div class="card border-secondary sm-3" style="width: 200px; margin: 3px 11px ;">
                         <div class="card-header">Last Update</div>
                         <div class="card-body text-secondary">
                             <h3 class="card-title text-center"><?= $lastUpdateFormat[0]; ?></h3>
