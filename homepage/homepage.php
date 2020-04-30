@@ -99,15 +99,11 @@ if( isset($_POST['cari'])){
 
     <main role="main">
         <section class="jumbotron text-center">
-            <div class="container" style="height: 300px; padding-top: 30px;">
+            <div class="container" style="height: 300px; padding-top: 50px;">
                 <h1 class="jumbotron-heading text-white">Cougar Counter</h1>
                 <p class="lead text-white-50" >Solusi Belanja Online Mudah dan Hemat <br> 
                 Temukan Segala Macam Produk IT Unggulan dengan Transaksi Aman dan Menguntungkan <br>
                 Jika Barang yang Anda Cari tidak Tersedia di List Hubungi Kami.</p>
-                <p>
-                    <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-                </p>
             </div>
         </section>
         <div class="album py-5 bg-light">
@@ -145,7 +141,7 @@ if( isset($_POST['cari'])){
                 <div class="row" style="margin-top: 22px;">
                     <?php foreach ($homepage as $home) : ?>
                         <div class="col-md-4">
-                            <div class="card border-secondary mb-4 box-shadow">
+                            <div class="card border-secondary mb-4 box-shadow" style="">
                                 <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap" src="../img/<?= $home['gambar']; ?>">
                                 <div class="card-body">
                                     <h5 class="card-text"><?= $home['nama_barang'] . ' ' . $home['merk'] . ' ' . $home['type'] ?></h5>

@@ -59,14 +59,23 @@ if (isset($_POST['update'])) {
 }
 
 // Proses Delete data
-if (isset($_POST["delete"])) {
+if (isset($_POST["delete"])) {  
     if (deletepembeli($_POST) > 0) {
-        echo "
-        <script>
-            alert('Customer berhasil dihapus');
-            document.location.href = 'customer.php';
-        </script>
-        ";
+        if($_POST['id'] == $_SESSION['userloginid']){
+            echo "
+            <script>
+                alert('Customer berhasil dihapus');
+                document.location.href = '../signout.php';
+            </script>
+            ";
+        }else{
+            echo "
+            <script>
+                alert('Customer berhasil dihapus');
+                document.location.href = 'customer.php';
+            </script>
+            ";
+        }
     } else {
         echo "
         <script>
